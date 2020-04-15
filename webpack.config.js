@@ -70,13 +70,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
+          MiniCssExtractPlugin.loader,
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'css-loader',
             options: {
-              esModule: true,
+              modules: true,
             },
           },
-          'css-loader',
         ],
       },
       {
