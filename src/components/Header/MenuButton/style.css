@@ -1,0 +1,32 @@
+.button {
+  margin: 30px 0;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  outline: none;
+}
+
+.hatch {
+  position: relative;
+  height: 4px;
+  width: 30px;
+  border-radius: 3px;
+  background-color: rgb(131, 131, 131);
+  margin: 4px 0;
+  transition: 0.1s;
+  transform-origin: 0 0;
+}
+
+.open .hatch {
+  transition: 0.1s;
+}
+
+.open .hatch:first-child {
+  transform: rotate(-45deg) translateY(6px) translateX(-8px);
+  width: 15px;
+}
+
+.open .hatch:last-child {
+  transform: rotate(45deg) translateY(-7px) translateX(-5px);
+  width: 15px;
+}
