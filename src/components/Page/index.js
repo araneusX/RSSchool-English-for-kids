@@ -1,10 +1,50 @@
-import { components, DIV } from '../../my_modules/htmlComponents';
-import Header from '../Header'
+import { DIV, CustomComponent } from '../../my_modules/htmlComponents';
+import Header from '../Header';
+import Menu from '../Menu';
+import MainContainer from '../MainContainer';
 import style from './style.css';
 
-const Page = 
-  DIV({component: 'Page', className: style.container}, [
-    Header
-  ]);
+/* props = {
+    mode: 'train'/'play',
+    menu: 'close'/'open,
+    current: 'main',
+    onMenuClick,
+    onModeClick
+  }
+*/
+class Page extends CustomComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    
+    return (
+      DIV({ className: style.container }, [
+        DIV({ className: style.headerPlace}),
+        new Header({
+          menu: this.props.menu, 
+          mode: this.props.mode,
+          onMenuClick: this.props.onMenuClick,
+          onModeClick: this.props.onModeClick,
+        }),
+        new Menu({
+          menu: this.props.menu,
+          mode: this.props.mode,
+          current: this.props.current, 
+          categories: this.props.categories,
+          onCategoryClick: this.props.onCategoryClick,
+          closeMenu: this.props.closeMenu,
+          onMenuClick: this.props.onMenuClick,
+        }),
+        new MainContainer({
+          mode: this.props.mode,
+          categories: this.props.categories,
+          onCategoryClick: this.props.onCategoryClick,
+        }),
+      ])
+    )
+  }
+}
 
 export default Page;

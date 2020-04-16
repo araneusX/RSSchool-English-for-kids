@@ -1,17 +1,39 @@
-import components from './components';
-
 export default class Component {
-  constructor(id, HTMLElement, childrenComponents = null, attributes = {}) {
-    if (id) {
-      if (components[id]) {
-        throw new Error(`Duplicate component id: ${id}`);
-      }
-      components[id] = this;
-      this.id = id;
-    }
-
+  constructor(HTMLElement, childrenComponents = null, attributes = {}) {
     this.node = HTMLElement;
     this.children = childrenComponents;
     this.attributes = attributes;
+  }
+
+  refresh(newProps) {
+    this.refreshChildren(newProps);
+  }
+
+
+  refreshChildren(newProps) {
+    this.children.forEach((child) => {
+      if (child.hasOwnProperty('props')) {
+        const newChildProps = {};
+        let isRefreshed = true;
+        
+        Object.keys(child.props).forEach((key) => {
+          if (child.props.hasOwnProperty(key)) {
+            if (newProps.hasOwnProperty(key) && child.props[key] !== newProps[key]) {
+              newChildProps[key] = newProps[key];
+              isRefreshed = false;
+            } else {
+              newChildProps[key] = child.props[key];
+            }
+          }
+        });
+
+        if (!isRefreshed) {
+          child.refresh(newChildProps);
+        }
+
+      } else {
+        child.refresh(newProps);
+      }
+    })
   }
 }

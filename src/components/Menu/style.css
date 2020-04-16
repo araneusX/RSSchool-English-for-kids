@@ -1,0 +1,53 @@
+.menu {
+  position: fixed;
+  height: 100%;
+  width: 350px;
+  background: linear-gradient(40deg,#00bf82,#0099ae);
+  top: 0;
+  left: -350px;
+  z-index: 40;
+  transition: left 0.5s;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.menu.play {
+  background: linear-gradient(40deg,#ffd86f,#fc6262);
+}
+
+.menu.open {
+  left: 0;
+}
+
+.list {
+  padding: 25px 80px 50px;
+}
+
+.menuItem {
+  color: white;
+  padding: 5px 0;
+  margin: 10px 0;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.current {
+  text-decoration: underline;
+}
+
+.trap {
+  position: absolute;
+  top: 0;
+  left: 350px;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.open .trap {
+  display: block;
+}

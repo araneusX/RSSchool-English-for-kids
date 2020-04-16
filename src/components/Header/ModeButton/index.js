@@ -1,18 +1,17 @@
 import { BUTTON, CustomComponent, DIV } from '../../../my_modules/htmlComponents';
 import style from './style.css';
 
-class ModeButton extends CustomComponent {
-  constructor() {
-    super({ state: 'train' });
+/* props = {mode: 'train'/'play'} */
 
-    this.node.addEventListener('click', () => {
-      this.refresh(this.state === 'train' ? 'play' : 'train');
-    });
+class ModeButton extends CustomComponent {
+  constructor(props) {
+    super(props);
+    this.node.addEventListener('click', this.props.onModeClick);
   }
 
-  refresh(newState) {
-    this.state = newState;
-    if (this.state === 'play') {
+  refresh(newProps) {
+    this.props = newProps;
+    if (this.props.mode === 'play') {
       this.node.classList.add(style.play)
       this.node.classList.remove(style.train)
     } else {
@@ -22,9 +21,10 @@ class ModeButton extends CustomComponent {
   }
 
   render() {
+    const classMode = this.props.mode === 'play' ? style.play : style.train;
 
     return (
-      BUTTON({ className: `${style.button} ${style.train}` }, [
+      BUTTON({ className: `${style.button} ${classMode}`}, [
         DIV({ className: style.rect })
       ])
     );

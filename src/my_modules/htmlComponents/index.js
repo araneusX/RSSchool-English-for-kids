@@ -1,5 +1,4 @@
 import CustomComponent from './CustomComponent';
-import components from './components';
 
 export {
   BODY,
@@ -12,9 +11,11 @@ export {
   H4,
   P,
   IMG,
+  UL,
+  LI,
+  A,
 } from './html';
 
 export {
-  components,
   CustomComponent,
 };

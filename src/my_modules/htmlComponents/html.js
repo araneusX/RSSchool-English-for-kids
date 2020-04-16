@@ -3,14 +3,11 @@ import Component from './Component';
 
 const createHTMLElement = (tagName, attributes, content) => {
   const element = document.createElement(tagName);
-
-  const componentSettings = turnAttributes(element, attributes);
+  turnAttributes(element, attributes);
+  
   const childComponents = turnContent(element, content);
 
-  const { id = null } = componentSettings;
-
   const component = new Component(
-    id,
     element,
     childComponents,
     attributes
@@ -23,7 +20,7 @@ export const BODY = (attributes = {}, content = []) => {
   const element = document.body;
   turnAttributes(element, attributes);
   const childComponents = turnContent(element, content);
-  return new Component('body', element, childComponents, attributes);
+  return new Component(element, childComponents, attributes);
 };
 
 export const DIV = (attributes = {}, content = []) => createHTMLElement('div', attributes, content);
@@ -42,4 +39,10 @@ export const H4 = (attributes = {}, content = []) => createHTMLElement('h4', att
 
 export const P = (attributes = {}, content = []) => createHTMLElement('p', attributes, content);
 
-export const IMG = (attributes = {}, content = []) => createHTMLElement('img', attributes, content);
+export const IMG = (attributes = {}) => createHTMLElement('img', attributes, []);
+
+export const UL = (attributes = {}, content = []) => createHTMLElement('ul', attributes, content);
+
+export const LI = (attributes = {}, content = []) => createHTMLElement('li', attributes, content);
+
+export const A = (attributes = {}, content = []) => createHTMLElement('a', attributes, content);

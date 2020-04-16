@@ -1,3 +1,16 @@
 .container {
-  
+  padding: 100px 0 50px;
+}
+
+.headerPlace {
+  height: 100px;
+  width: 100%;
+  background: 
+    linear-gradient(0deg, rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.8) 35%, 
+    rgba(255,255,255,1) 100%);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
 }

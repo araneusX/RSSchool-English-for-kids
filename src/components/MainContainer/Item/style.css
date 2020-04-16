@@ -1,0 +1,15 @@
+.item {
+  flex: 0 0 300px;
+  border-radius: 5px;
+  box-shadow: -1px 4px 7px -2px rgba(0,0,0,.4);
+  border: 1px solid #ccc;
+  margin: 20px;
+  height: 300px;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.item:hover {
+  box-shadow: -1px 5px 15px 0 rgba(0,0,0,.5);
+  transition: box-shadow 0.5s;
+}

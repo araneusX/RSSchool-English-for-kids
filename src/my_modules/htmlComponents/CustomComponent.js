@@ -1,22 +1,44 @@
 import { clearInnerHTML, turnAttributes } from './utils';
-import components from './components';
 
 class CustomComponent {
   constructor(props = {}) {
-    this.state = props.state;
+    this.props = props;
     this.component = this.render();
     this.node = this.component.node;
     this.children = this.component.children;
-    this.empty = (method) => { throw new Error(`Empty method ${method}`); };
-    if (this.component.id) {
-      components[this.component.id] = this;
-    }
   }
 
-  refresh(newState) {
-    this.state = newState;
-    this.empty('refresh');
+  refresh(newProps) {
+    this.props = newProps;
+    this.refreshChildren(newProps);
   }
+
+  refreshChildren(newProps) {
+    this.children.forEach((child) => {
+      if (child.hasOwnProperty('props')) {
+        const newChildProps = {};
+        let isRefreshed = true;
+        
+        Object.keys(child.props).forEach((key) => {
+          if (child.props.hasOwnProperty(key)) {
+            if (newProps.hasOwnProperty(key) && child.props[key] !== newProps[key]) {
+              newChildProps[key] = newProps[key];
+              isRefreshed = false;
+            } else {
+              newChildProps[key] = child.props[key];
+            }
+          }
+        });
+
+        if (!isRefreshed) {
+          child.refresh(newChildProps);
+        }
+      } else {
+        child.refresh(newProps);
+      }
+    })
+  }
+
 
   rerender() {
     this.children.forEach((item) => {
@@ -39,9 +61,7 @@ class CustomComponent {
     this.children = component.children;
   }
 
-  render() {
-    this.empty('render');
-  }
+  render() {}
 }
 
 export default CustomComponent;
