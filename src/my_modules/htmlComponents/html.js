@@ -1,16 +1,16 @@
-import { turnAttributes, turnContent } from './utils'
+import { turnAttributes, turnContent } from './utils';
 import Component from './Component';
 
 const createHTMLElement = (tagName, attributes, content) => {
   const element = document.createElement(tagName);
   turnAttributes(element, attributes);
-  
+
   const childComponents = turnContent(element, content);
 
   const component = new Component(
     element,
     childComponents,
-    attributes
+    attributes,
   );
 
   return component;

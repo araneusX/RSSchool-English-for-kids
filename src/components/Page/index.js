@@ -13,17 +13,12 @@ import style from './style.css';
   }
 */
 class Page extends CustomComponent {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    
     return (
       DIV({ className: style.container }, [
-        DIV({ className: style.headerPlace}),
+        DIV({ className: style.headerPlace }),
         new Header({
-          menu: this.props.menu, 
+          menu: this.props.menu,
           mode: this.props.mode,
           onMenuClick: this.props.onMenuClick,
           onModeClick: this.props.onModeClick,
@@ -31,7 +26,7 @@ class Page extends CustomComponent {
         new Menu({
           menu: this.props.menu,
           mode: this.props.mode,
-          current: this.props.current, 
+          current: this.props.current,
           categories: this.props.categories,
           onCategoryClick: this.props.onCategoryClick,
           closeMenu: this.props.closeMenu,
@@ -39,11 +34,13 @@ class Page extends CustomComponent {
         }),
         new MainContainer({
           mode: this.props.mode,
+          current: this.props.current,
           categories: this.props.categories,
           onCategoryClick: this.props.onCategoryClick,
+          data: this.props.data,
         }),
       ])
-    )
+    );
   }
 }
 

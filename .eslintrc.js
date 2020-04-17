@@ -15,7 +15,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "class-methods-use-this": [{ "exceptMethods": ["render", "refresh"] }]
+    "class-methods-use-this": "off",
     "no-param-reassign": "off",
     "linebreak-style": "off",
   },

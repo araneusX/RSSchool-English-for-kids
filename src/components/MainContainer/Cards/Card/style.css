@@ -1,0 +1,107 @@
+.wrapper {
+  margin: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  height: 250px;
+  transition: box-shadow 0.2s, transform 0.2s linear;
+  transform-style: preserve-3d;
+  margin: 0;
+  z-index: 10;
+}
+
+.play {
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: none;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px 5px 0 0;
+  transition: 0.2s;
+}
+
+.play .image {
+  height: 250px;
+  transition: 0.2s;
+}
+
+.word {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: center;
+  color: #212529;
+  margin: 0px;
+  padding: 5px;
+}
+
+.play .word {
+  opacity: 0;
+}
+
+.trap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rotate .trap {
+  display: none;
+}
+
+.rotateBtn {
+  opacity: 0.5;
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: help;
+  border-radius: 50%;
+}
+
+.rotateBtn:hover {
+  box-shadow: 0px 0px 5px 3px rgba(255, 145, 0, 0.87), 0px 0px 5px 3px rgba(255, 175, 1, 0.959) inset;
+  transition: box-shadow 0.2s;
+}
+
+.play .rotateBtn {
+  display:none;
+}
+
+.back, .front {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back, .front, .rotateBtn {
+  backface-visibility: hidden;
+}
+
+.back {
+  display: flex;
+  justify-content: flex-end;
+  transform: rotateY(180deg);
+}
+
+.rotate {
+  transform: rotateY(180deg);
+  transition: transform 0.4s linear;
+}

@@ -17,10 +17,13 @@ export const turnAttributes = (element, attributes) => {
       case 'src':
         el.src = attributes.src;
         break;
-      case 'id':
+      case 'href':
         el.href = attributes.href;
         break;
-        case 'value':
+      case 'style':
+        el.style = attributes.style;
+        break;
+      case 'value':
         el.value = attributes.value;
         break;
       default:
@@ -37,7 +40,9 @@ export const turnContent = (element, content) => {
       item.parentNode = element;
       childComponents.push(item);
     } else {
-      const textNode = item.node ? document.createTextNode(item.node) : document.createTextNode(item);
+      const textNode = item.node
+        ? document.createTextNode(item.node)
+        : document.createTextNode(item);
       element.append(textNode);
     }
   });

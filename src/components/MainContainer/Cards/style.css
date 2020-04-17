@@ -1,0 +1,16 @@
+.categories {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
+  width: 100%;
+  max-width: 1040px;
+}

@@ -15,13 +15,14 @@ class CustomComponent {
 
   refreshChildren(newProps) {
     this.children.forEach((child) => {
-      if (child.hasOwnProperty('props')) {
+      if (Object.prototype.hasOwnProperty.call(child, 'props')) {
         const newChildProps = {};
         let isRefreshed = true;
-        
+
         Object.keys(child.props).forEach((key) => {
-          if (child.props.hasOwnProperty(key)) {
-            if (newProps.hasOwnProperty(key) && child.props[key] !== newProps[key]) {
+          if (Object.prototype.hasOwnProperty.call(child.props, key)) {
+            if (Object.prototype.hasOwnProperty.call(newProps, key)
+                && child.props[key] !== newProps[key]) {
               newChildProps[key] = newProps[key];
               isRefreshed = false;
             } else {
@@ -36,21 +37,11 @@ class CustomComponent {
       } else {
         child.refresh(newProps);
       }
-    })
+    });
   }
 
-
   rerender() {
-    this.children.forEach((item) => {
-      delete components[item.id];
-    });
-    delete components[this.id];
-    
     const component = this.render();
-
-    if (this.id) {
-      components[this.id] = this;
-    };
 
     clearInnerHTML(this.node);
     component.children.forEach((item) => {

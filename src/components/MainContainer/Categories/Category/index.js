@@ -1,18 +1,16 @@
-import { DIV, IMG, CustomComponent, P } from '../../../../my_modules/htmlComponents';
+import {
+  DIV, IMG, CustomComponent, P,
+} from '../../../../my_modules/htmlComponents';
 import ItemContainer from '../../Item';
 import style from './style.css';
 
 /* props = {mode: 'train'/'play', category: {id, name}} */
 class Category extends CustomComponent {
-  constructor(props) {
-    super(props);
-  }
-
   refresh(newProps) {
     if (newProps.mode === 'play') {
-      this.node.classList.add(style.play)
+      this.node.classList.add(style.play);
     } else {
-      this.node.classList.remove(style.play)
+      this.node.classList.remove(style.play);
     }
 
     this.props = newProps;
@@ -24,15 +22,15 @@ class Category extends CustomComponent {
     return (
       ItemContainer({ className: `${style.container} ${classPlay}` }, [
         DIV({ className: style.innerWrapper }, [
-          IMG({ 
+          IMG({
             className: style.image,
             alt: this.props.category.name,
-            src: `/src/assets/data/category/img/${this.props.category.id}.jpg` 
+            src: `/src/assets/data/category/img/${this.props.category.access}.jpg`,
           }),
-          DIV({ className: style.shadow}),
+          DIV({ className: style.shadow }),
         ]),
-        P({ className: style.name}, [this.props.category.name]),
-        DIV({ className: style.trap, ['data-category']: this.props.category.id}),
+        P({ className: style.name }, [this.props.category.name]),
+        DIV({ className: style.trap, 'data-category': this.props.category.access }),
       ])
     );
   }

@@ -1,0 +1,1 @@
+export const checkCurrentCategoryId(categories)

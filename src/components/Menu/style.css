@@ -46,6 +46,7 @@
   display: none;
   width: 100vw;
   height: 100vh;
+  background-color: rgba(216, 216, 216, 0.493);
 }
 
 .open .trap {

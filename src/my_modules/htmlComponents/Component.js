@@ -12,13 +12,14 @@ export default class Component {
 
   refreshChildren(newProps) {
     this.children.forEach((child) => {
-      if (child.hasOwnProperty('props')) {
+      if (Object.prototype.hasOwnProperty.call(child, 'props')) {
         const newChildProps = {};
         let isRefreshed = true;
-        
+
         Object.keys(child.props).forEach((key) => {
-          if (child.props.hasOwnProperty(key)) {
-            if (newProps.hasOwnProperty(key) && child.props[key] !== newProps[key]) {
+          if (Object.prototype.hasOwnProperty.call(child.props, key)) {
+            if (Object.prototype.hasOwnProperty.call(newProps, key)
+                && child.props[key] !== newProps[key]) {
               newChildProps[key] = newProps[key];
               isRefreshed = false;
             } else {
@@ -30,10 +31,9 @@ export default class Component {
         if (!isRefreshed) {
           child.refresh(newChildProps);
         }
-
       } else {
         child.refresh(newProps);
       }
-    })
+    });
   }
 }
