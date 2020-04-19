@@ -10,29 +10,29 @@
   transition: box-shadow 0.2s, transform 0.2s linear;
   transform-style: preserve-3d;
   margin: 0;
-  z-index: 10;
+  overflow: hidden;
 }
 
 .play {
 }
 
 .image {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: auto;
-  object-fit: none;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
   margin: 0px;
   padding: 0px;
   border-radius: 5px 5px 0 0;
   transition: 0.2s;
 }
 
-.play .image {
-  height: 250px;
-  transition: 0.2s;
-}
-
-.word {
+.word, .translation {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
   font-size: 24px;
   line-height: 36px;
   font-weight: 400;
@@ -40,10 +40,18 @@
   color: #212529;
   margin: 0px;
   padding: 5px;
+  background-color: white;
+  transition: visibility 0.2s
+}
+
+.rotate .word {
+  visibility: hidden;
+  transition: visibility 0.2s
 }
 
 .play .word {
-  opacity: 0;
+  bottom: -50px;
+  transition: bottom 0.5s;
 }
 
 .trap {
@@ -68,6 +76,7 @@
   right: 5px;
   cursor: help;
   border-radius: 50%;
+  transition: visibility 0.2s
 }
 
 .rotateBtn:hover {
@@ -76,32 +85,39 @@
 }
 
 .play .rotateBtn {
-  display:none;
+  bottom: -55px;
+}
+
+.rotate .rotateBtn {
+  visibility: hidden;
+  transition: visibility 0.2s
 }
 
 .back, .front {
+  position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .back, .front, .rotateBtn {
-  backface-visibility: hidden;
+  /* backface-visibility: hidden; */
 }
 
 .back {
-  display: flex;
-  justify-content: flex-end;
   transform: rotateY(180deg);
 }
 
 .rotate {
   transform: rotateY(180deg);
   transition: transform 0.4s linear;
+}
+
+.right {
+  opacity: 0.7;
 }

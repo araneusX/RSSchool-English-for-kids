@@ -11,7 +11,7 @@ class Categories extends CustomComponent {
   }
 
   render() {
-    const content = this.props.categories.main.map(
+    const content = this.props.categories.map(
       (category) => new Category({ mode: this.props.mode, category }),
     );
 

@@ -25,12 +25,12 @@ class Category extends CustomComponent {
           IMG({
             className: style.image,
             alt: this.props.category.name,
-            src: `/src/assets/data/category/img/${this.props.category.access}.jpg`,
+            src: `/src/assets/data/category/img/${this.props.category.id}.jpg`,
           }),
           DIV({ className: style.shadow }),
         ]),
         P({ className: style.name }, [this.props.category.name]),
-        DIV({ className: style.trap, 'data-category': this.props.category.access }),
+        DIV({ className: style.trap, 'data-category': this.props.category.id }),
       ])
     );
   }

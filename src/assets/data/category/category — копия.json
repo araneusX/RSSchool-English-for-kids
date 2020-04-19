@@ -1,0 +1,10 @@
+[
+  {"id":"c0001","name":"Action (set A)","access":"action_a"},
+  {"id":"c0002","name":"Action (set B)","access":"action_b"},
+  {"id":"c0003","name":"Animal (set A)","access":"animal_a"},
+  {"id":"c0004","name":"Animal (set B)","access":"animal_b"},
+  {"id":"c0005","name":"Clothes","access":"clothes"},
+  {"id":"c0006","name":"Emotions","access":"emotions"},
+  {"id":"c0007","name":"Fruits","access":"fruits"},
+  {"id":"c0008","name":"Vegetables","access":"vegetables"}
+]

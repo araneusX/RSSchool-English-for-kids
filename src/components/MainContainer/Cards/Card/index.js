@@ -5,7 +5,7 @@ import {
 import ItemContainer from '../../Item';
 import style from './style.css';
 
-/* props = {mode: 'train'/'play', card: {id, category, access, word, translation }} */
+/* props = {mode: 'train'/'play', card: {id, category, word, translation }} */
 class Card extends CustomComponent {
   constructor(props) {
     super(props);
@@ -18,6 +18,10 @@ class Card extends CustomComponent {
       this.node.classList.remove(style.play);
     }
     this.props = newProps;
+    if (newProps.rightResult && newProps.rightResult.includes(this.props.card.id)) {
+      this.node.classList.add(style.right);
+    }
+    this.props = newProps;
   }
 
   render() {
@@ -26,17 +30,17 @@ class Card extends CustomComponent {
     return (
       DIV({ className: style.wrapper }, [
         ItemContainer({ className: `${style.container} ${classPlay}` }, [
+          DIV({ className: style.back }, [
+            P({ className: style.translation }, [this.props.card.translation]),
+          ]),
           DIV({ className: style.front }, [
             IMG({
               className: style.image,
               alt: this.props.card.word,
-              src: `/src/assets/data/card/img/${this.props.card.access}.jpg`,
+              src: `/src/assets/data/card/img/${this.props.card.id}.jpg`,
             }),
             P({ className: style.word }, [this.props.card.word]),
-            DIV({ className: style.trap, 'data-card': this.props.card.access }),
-          ]),
-          DIV({ className: style.back }, [
-            P({ className: style.word }, [this.props.card.translation]),
+            DIV({ className: style.trap, 'data-card': this.props.card.id }),
           ]),
           IMG({
             className: style.rotateBtn,

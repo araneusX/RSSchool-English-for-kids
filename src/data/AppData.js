@@ -46,9 +46,11 @@ class AppData extends Data {
   }
 
   countDifficulty(item) {
-    return item.statistics.mistake > 0
-      ? Math.round((item.statistics.mistake / item.statistics.view) * 100)
-      : 0;
+    return (
+      item.statistics.mistake > 0
+        ? Math.round((item.statistics.mistake / item.statistics.view) * 100)
+        : 0
+    );
   }
 
   addView(id) {
@@ -65,8 +67,8 @@ class AppData extends Data {
 
   addMistake(id) {
     const i = this.findById(id);
-    this.data[i].statistics.view += 1;
-    this.data[i].statistics.difficulty = this.countDifficulty(this.base[i]);
+    this.data[i].statistics.mistake += 1;
+    this.data[i].statistics.difficulty = this.countDifficulty(this.data[i]);
     this.saveStatistics();
   }
 

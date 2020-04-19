@@ -42,14 +42,14 @@ class Menu extends CustomComponent {
   render() {
     const classOpen = this.props.menu === 'open' ? style.open : '';
     const classPlay = this.props.mode === 'play' ? style.play : '';
-    const categories = [{ access: 'main', name: 'Main Page' }, ...this.props.categories.main];
+    const categories = [{ id: 'main', name: 'Main Page' }, ...this.props.categories];
 
     const items = categories.map((item) => {
-      const classCurrent = this.props.current === item.access ? style.current : '';
+      const classCurrent = this.props.current === item.id ? style.current : '';
       return (
         LI({
-          id: item.access,
-          'data-category': item.access,
+          id: item.id,
+          'data-category': item.id,
           className: `${style.menuItem} ${classCurrent}`,
         }, [
           item.name,

@@ -21,12 +21,7 @@ const getStartState = () => new Promise((resolve) => {
 
   getJSON('/src/assets/data/category/category.json')
     .then((data) => {
-      const categories = { main: data };
-      data.forEach((category) => {
-        categories[category.access] = category;
-      });
-
-      startState.categories = categories;
+      startState.categories = data;
     })
     .then(() => {
       getJSON('/src/assets/data/card/card.json')
