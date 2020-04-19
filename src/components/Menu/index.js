@@ -14,7 +14,11 @@ class Menu extends CustomComponent {
   constructor(props) {
     super(props);
 
-    this.node.addEventListener('click', this.props.onCategoryClick);
+    this.node.addEventListener('click', (e) => {
+      if (e.toElement.dataset.category) {
+        this.props.onCategoryChange(e.toElement.dataset.category);
+      }
+    });
     this.children[0].node.addEventListener('click', this.props.closeMenu);
   }
 
@@ -61,6 +65,7 @@ class Menu extends CustomComponent {
       DIV({ className: `${style.menu} ${classOpen} ${classPlay}` }, [
         DIV({ className: style.trap }),
         DIV({ className: style.buttonContainer }, [
+          DIV({ id: 'statistics', className: style.statistics, 'data-category': 'statistics' }, ['Statistics']),
           new MenuButton({ open: true, onMenuClick: this.props.onMenuClick }),
         ]),
         UL({ className: style.list }, [

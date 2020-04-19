@@ -26,6 +26,9 @@ export const turnAttributes = (element, attributes) => {
       case 'value':
         el.value = attributes.value;
         break;
+      case 'size':
+        el.size = attributes.size;
+        break;
       default:
         el.setAttribute(attribute, attributes[attribute]);
     }

@@ -6,11 +6,10 @@ import StartButton from './StartButton';
 import Stars from './Stars';
 import style from './style.css';
 
-/* props = {mode: 'train'/'play', categories:, onCategoryClick, getSrc} */
+/* props = {mode: 'train'/'play', categories:, onCategoryChange, data} */
 class Cards extends CustomComponent {
   constructor(props) {
     super(props);
-
     this.gameResult = -1;
     this.allResults = [];
 
@@ -31,9 +30,9 @@ class Cards extends CustomComponent {
         } else if (this.props.mode === 'train') {
           const audio = new Audio(`/src/assets/data/card/sound/${current}.mp3`);
           audio.play();
+          this.props.data.addTrain(current);
         }
       }
-
 
       if (e.toElement.dataset.rotate) {
         const classRotate = e.toElement.dataset.rotate;
@@ -51,7 +50,7 @@ class Cards extends CustomComponent {
     if (!this.isPlay) {
       this.game = new Game(
         this.props.data,
-        [...this.cardSet],
+        [...this.props.cardSet],
         this.onRight.bind(this),
         this.onMistake.bind(this),
         this.onEnd.bind(this),
@@ -59,6 +58,8 @@ class Cards extends CustomComponent {
       this.isPlay = true;
       this.game.start();
       this.refreshChildren({ isPlay: this.isPlay });
+    } else {
+      this.game.repeat();
     }
   }
 
@@ -66,31 +67,28 @@ class Cards extends CustomComponent {
     this.rightResult.push(id);
     const result = [...this.rightResult];
     this.allResults.push(true);
-    const allResults = [...this.allResults];
-    this.refreshChildren({ rightResult: result, allResults });
+    this.allResults = this.allResults.length < 9
+      ? [...this.allResults]
+      : this.allResults.slice(-8);
+    this.refreshChildren({ rightResult: result, allResults: this.allResults });
   }
 
   onMistake() {
     this.allResults.push(false);
-    const allResults = [...this.allResults];
-    this.refreshChildren({ allResults });
+    this.allResults = this.allResults.length < 9
+      ? [...this.allResults]
+      : this.allResults.slice(-8);
+    this.refreshChildren({ allResults: this.allResults });
   }
 
   onEnd(result) {
-    this.isPlay = false;
-    this.rightResult = [];
-    this.allResults = [];
-
-
     this.gameResult = result;
     this.rerender();
-
-    this.gameResult = -1;
-    setTimeout(() => { this.rerender(); }, 3000);
+    setTimeout(() => { this.props.onCategoryChange('main'); }, 3000);
   }
 
   refresh(newProps) {
-    if (newProps.mode === 'train' && this.props.mode === 'play') {
+    if (newProps.mode === 'train' && this.props.mode === 'play' && this.isPlay) {
       this.isPlay = false;
       this.rightResult = [];
       this.allResults = [];
@@ -115,8 +113,7 @@ class Cards extends CustomComponent {
     if (this.gameResult >= 0) {
       content = [new EndScreen({ result: this.gameResult })];
     } else {
-      this.cardSet = this.props.data.getCategory(this.props.current).data;
-      const cards = this.cardSet.map(
+      const cards = this.props.cardSet.map(
         (card) => new Card({ mode: this.props.mode, card, rightResult: this.rightResult || [] }),
       );
 

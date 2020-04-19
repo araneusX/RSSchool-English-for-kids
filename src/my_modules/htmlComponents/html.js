@@ -46,3 +46,19 @@ export const UL = (attributes = {}, content = []) => createHTMLElement('ul', att
 export const LI = (attributes = {}, content = []) => createHTMLElement('li', attributes, content);
 
 export const A = (attributes = {}, content = []) => createHTMLElement('a', attributes, content);
+
+export const SELECT = (attributes = {}, content = []) => createHTMLElement('select', attributes, content);
+
+export const OPTION = (attributes = {}, content = []) => createHTMLElement('option', attributes, content);
+
+export const TR = (attributes = {}, content = []) => createHTMLElement('tr', attributes, content);
+
+export const TD = (attributes = {}, content = []) => createHTMLElement('td', attributes, content);
+
+export const TABLE = (attributes = {}, content = []) => createHTMLElement('table', attributes, content);
+
+export const COLGROUP = (attributes = {}, content = []) => createHTMLElement('colgroup', attributes, content);
+
+export const COL = (attributes = {}, content = []) => createHTMLElement('col', attributes, content);
+
+export const THEAD = (attributes = {}, content = []) => createHTMLElement('thead', attributes, content);

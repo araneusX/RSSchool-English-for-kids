@@ -2,12 +2,16 @@ import { DIV, CustomComponent } from '../../../my_modules/htmlComponents';
 import Category from './Category';
 import style from './style.css';
 
-/* props = {mode: 'train'/'play', categories: , onCategoryClick, getSrc} */
+/* props = {mode: 'train'/'play', categories: , onCategoryChange, getSrc} */
 class Categories extends CustomComponent {
   constructor(props) {
     super(props);
 
-    this.node.addEventListener('click', this.props.onCategoryClick);
+    this.node.addEventListener('click', (e) => {
+      if (e.toElement.dataset.category) {
+        this.props.onCategoryChange(e.toElement.dataset.category);
+      }
+    });
   }
 
   render() {

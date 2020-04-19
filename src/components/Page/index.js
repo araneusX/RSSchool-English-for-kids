@@ -20,6 +20,7 @@ class Page extends CustomComponent {
         new Header({
           menu: this.props.menu,
           mode: this.props.mode,
+          current: this.props.current,
           onMenuClick: this.props.onMenuClick,
           onModeClick: this.props.onModeClick,
         }),
@@ -28,7 +29,7 @@ class Page extends CustomComponent {
           mode: this.props.mode,
           current: this.props.current,
           categories: this.props.categories,
-          onCategoryClick: this.props.onCategoryClick,
+          onCategoryChange: this.props.onCategoryChange,
           closeMenu: this.props.closeMenu,
           onMenuClick: this.props.onMenuClick,
         }),
@@ -36,7 +37,7 @@ class Page extends CustomComponent {
           mode: this.props.mode,
           current: this.props.current,
           categories: this.props.categories,
-          onCategoryClick: this.props.onCategoryClick,
+          onCategoryChange: this.props.onCategoryChange,
           data: this.props.data,
         }),
       ])

@@ -28,7 +28,7 @@ class Data {
 
   getSortedStatisticsBy(key) {
     const sortedData = [...this.data];
-    sortedData.sort((a, b) => a.statistics[key] - b.statistics[key]);
+    sortedData.sort((a, b) => b.statistics[key] - a.statistics[key]);
     return new Data(sortedData);
   }
 }

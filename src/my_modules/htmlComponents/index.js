@@ -13,7 +13,15 @@ export {
   IMG,
   UL,
   LI,
+  TR,
+  TD,
+  TABLE,
+  COLGROUP,
+  COL,
+  THEAD,
   A,
+  SELECT,
+  OPTION,
 } from './html';
 
 export {

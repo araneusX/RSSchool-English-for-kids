@@ -9,7 +9,7 @@ import './assets/style.css';
       current: 'main',
       categories = {
         main: [<categories>],
-        <name>: {<category>}, 
+        <name>: {<category>},
       },
       data: [],
     };
@@ -38,17 +38,15 @@ const startApp = (state) => {
     refreshApp();
   }
 
-  function onCategoryClick(e) {
-    if (e.toElement.dataset.category) {
-      appState.current = e.toElement.dataset.category;
-      appState.menu = 'close';
-      refreshApp();
-    }
+  function onCategoryChange(category) {
+    appState.current = category;
+    appState.menu = 'close';
+    refreshApp();
   }
 
   appState.onMenuClick = onMenuClick;
   appState.onModeClick = onModeClick;
-  appState.onCategoryClick = onCategoryClick;
+  appState.onCategoryChange = onCategoryChange;
   appState.closeMenu = closeMenu;
 
   App = new Page(appState);

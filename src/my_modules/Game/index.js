@@ -70,6 +70,13 @@ class Game {
       this.play();
     }
   }
+
+  repeat() {
+    if (!this.isProgress) {
+      this.isProgress = true;
+      this.audio.play();
+    }
+  }
 }
 
 export default Game;

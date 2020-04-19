@@ -1,16 +1,16 @@
 import { DIV, CustomComponent } from '../../my_modules/htmlComponents';
 import Categories from './Categories';
 import Cards from './Cards';
+import Statistics from './Statistics';
 
 import style from './style.css';
 
 /* props = {
-  mode: 'train'/'play',
+  mode: 'play'/'train'
+  current: <category>
   categories: [<{id, name}>,<{...}>],
-  onCategoryClick,
-  getSrc,
-  getContent,
-  getStatistic
+  onCategoryChange
+  data
 } */
 class MainContainer extends CustomComponent {
   refresh(newProps) {
@@ -25,20 +25,30 @@ class MainContainer extends CustomComponent {
 
   render() {
     const content = [];
-    if (this.props.current === 'main') {
-      content.push(new Categories({
-        mode: this.props.mode,
-        categories: this.props.categories,
-        onCategoryClick: this.props.onCategoryClick,
-      }));
-    } else {
-      content.push(new Cards({
-        mode: this.props.mode,
-        current: this.props.current,
-        data: this.props.data,
-        categories: this.props.categories,
-      }));
+    switch (this.props.current) {
+      case 'main':
+        content.push(new Categories({
+          mode: this.props.mode,
+          categories: this.props.categories,
+          onCategoryChange: this.props.onCategoryChange,
+        }));
+        break;
+      case 'statistics':
+        content.push(new Statistics({
+          categories: this.props.categories,
+          data: this.props.data,
+          onCategoryChange: this.props.onCategoryChange,
+        }));
+        break;
+      default:
+        content.push(new Cards({
+          mode: this.props.mode,
+          data: this.props.data,
+          onCategoryChange: this.props.onCategoryChange,
+          cardSet: this.props.data.getCategory(this.props.current).data,
+        }));
     }
+
     return (
       DIV({ className: style.container }, content));
   }

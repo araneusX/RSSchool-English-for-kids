@@ -33,6 +33,7 @@ class AppData extends Data {
   createStatisticsObject(id) {
     return {
       id,
+      train: 0,
       view: 0,
       right: 0,
       mistake: 0,
@@ -51,6 +52,11 @@ class AppData extends Data {
         ? Math.round((item.statistics.mistake / item.statistics.view) * 100)
         : 0
     );
+  }
+
+  addTrain(id) {
+    this.data[this.findById(id)].statistics.train += 1;
+    this.saveStatistics();
   }
 
   addView(id) {
@@ -80,6 +86,13 @@ class AppData extends Data {
       }
     }
     return new Data(data);
+  }
+
+  resetStatistics() {
+    for (let i = 0; i < this.data.length; i += 1) {
+      this.data[i].statistics = this.createStatisticsObject(this.data[i].id);
+    }
+    this.saveStatistics();
   }
 }
 

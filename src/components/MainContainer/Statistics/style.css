@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  position: relative;
+  top: -50px;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  width: 100%;
+  max-width: 1040px;
+}
+
+.categories {
+  width: 100%;
+  display: flex;
+  border: 1px solid;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(40deg, #fc6262, #ffd86f);
+  padding: 20px 0;
+}
+
+.categoriesSelect {
+  background: rgb(51, 238, 4);
+  color: rgb(73, 13, 13);
+}
+
+.categoriesName {
+  font-size: 24px;
+  margin: 0 20px;
+}
+
+.button {
+  width: 15%;
+}
+
+.buttonWord {
+  width: 40%;
+}
+
+.table {
+  border-collapse: collapse;
+  border: 2px solid rgb(138, 138, 138);
+  width: 100%;
+  text-transform: capitalize;
+}
+
+.theader {
+  background: linear-gradient(40deg,#ffd86f,#fc6262);
+  border: 2px solid rgb(138, 138, 138);
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+}
+
+.theader .td:hover {
+  box-shadow: 0 0 15px 15px rgba(0, 68, 255, 0.199) inset;
+}
+
+.tr {
+}
+
+.td {
+  border: 1px solid rgb(190,190,190);
+  text-align: center;
+}
+
+.wordCol {
+  width: 40%;
+}
+
+.dataCol {
+  width: 15%;
+}
+
+.word {
+  font-weight: 900;
+}
+
+.translation {
+  font-style: italic;
+}
+
+.buttonWrapper {
+  position: relative;
+  top: -24px;
+  right: 0px;
+  display: flex;
+  justify-content: flex-end;
+  max-width: calc(100% - 80px);
+  padding: 0 20px;
+  z-index: 30;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+    word-wrap: break-word;
+    max-width: 40px;
+    padding: 0px 14px;
+    text-align: end;  
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .buttonWrapper button {
+    font-size: 16px;
+  }
+}
+

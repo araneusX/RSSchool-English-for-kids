@@ -49,6 +49,14 @@
   transition: visibility 0.2s
 }
 
+.translation {
+  visibility: hidden;
+}
+
+.rotate .translation {
+  visibility: visible;
+}
+
 .play .word {
   bottom: -50px;
   transition: bottom 0.5s;
