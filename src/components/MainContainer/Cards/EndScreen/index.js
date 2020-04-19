@@ -15,7 +15,7 @@ class EndScreen extends CustomComponent {
       access = 'failure';
       message = `${this.props.result} errors!`;
     }
-    const audio = new Audio(`/src/assets/sound/${access}.mp3`);
+    const audio = new Audio(`/assets/sound/${access}.mp3`);
     audio.play();
 
     return (
@@ -23,7 +23,7 @@ class EndScreen extends CustomComponent {
         IMG({
           className: style.image,
           alt: access,
-          src: `/src/assets/img/${access}.jpg`,
+          src: `/assets/img/${access}.jpg`,
         }),
         P({ className: style.text }, [
           message,

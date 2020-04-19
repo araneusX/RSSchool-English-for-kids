@@ -3,8 +3,6 @@ import Categories from './Categories';
 import Cards from './Cards';
 import Statistics from './Statistics';
 
-import style from './style.css';
-
 /* props = {
   mode: 'play'/'train'
   current: <category>
@@ -40,6 +38,17 @@ class MainContainer extends CustomComponent {
           onCategoryChange: this.props.onCategoryChange,
         }));
         break;
+      case 'difficult': {
+        const words = this.props.data.getSortedStatisticsBy('difficulty').data;
+        const cardSet = words.slice(0, 8).filter((word) => word.statistics.difficulty > 0);
+        content.push(new Cards({
+          mode: this.props.mode,
+          data: this.props.data,
+          onCategoryChange: this.props.onCategoryChange,
+          cardSet,
+        }));
+      }
+        break;
       default:
         content.push(new Cards({
           mode: this.props.mode,
@@ -50,7 +59,7 @@ class MainContainer extends CustomComponent {
     }
 
     return (
-      DIV({ className: style.container }, content));
+      DIV({}, content));
   }
 }
 

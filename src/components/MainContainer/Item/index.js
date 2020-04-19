@@ -3,9 +3,11 @@ import style from './style.css';
 
 export default (param = {}, children = []) => {
   const thisParam = param;
-  thisParam.className = param.hasOwnProperty('className') ? `${param.className} ${style.item}` : style.item;
-  
+  thisParam.className = Object.prototype.hasOwnProperty.call(param, 'className')
+    ? `${param.className} ${style.item}`
+    : style.item;
+
   return (
     DIV(thisParam, children)
   );
-}
+};

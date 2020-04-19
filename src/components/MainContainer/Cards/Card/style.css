@@ -113,10 +113,6 @@
   align-items: center;
 }
 
-.back, .front, .rotateBtn {
-  /* backface-visibility: hidden; */
-}
-
 .back {
   transform: rotateY(180deg);
 }

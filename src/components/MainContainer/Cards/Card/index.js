@@ -37,14 +37,14 @@ class Card extends CustomComponent {
             IMG({
               className: style.image,
               alt: this.props.card.word,
-              src: `/src/assets/data/card/img/${this.props.card.id}.jpg`,
+              src: `/assets/data/card/img/${this.props.card.id}.jpg`,
             }),
             P({ className: style.word }, [this.props.card.word]),
             DIV({ className: style.trap, 'data-card': this.props.card.id }),
           ]),
           IMG({
             className: style.rotateBtn,
-            src: '/src/assets/img/rotate.svg',
+            src: '/assets/img/rotate.svg',
             alt: 'rotate',
             'data-rotate': style.rotate,
           }),

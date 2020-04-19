@@ -1,5 +1,5 @@
 import Game from '../../../my_modules/Game';
-import { DIV, CustomComponent } from '../../../my_modules/htmlComponents';
+import { DIV, P, CustomComponent } from '../../../my_modules/htmlComponents';
 import Card from './Card';
 import EndScreen from './EndScreen';
 import StartButton from './StartButton';
@@ -28,7 +28,7 @@ class Cards extends CustomComponent {
             this.game.check(current);
           }
         } else if (this.props.mode === 'train') {
-          const audio = new Audio(`/src/assets/data/card/sound/${current}.mp3`);
+          const audio = new Audio(`/assets/data/card/sound/${current}.mp3`);
           audio.play();
           this.props.data.addTrain(current);
         }
@@ -112,7 +112,7 @@ class Cards extends CustomComponent {
 
     if (this.gameResult >= 0) {
       content = [new EndScreen({ result: this.gameResult })];
-    } else {
+    } else if (this.props.cardSet.length > 0) {
       const cards = this.props.cardSet.map(
         (card) => new Card({ mode: this.props.mode, card, rightResult: this.rightResult || [] }),
       );
@@ -126,6 +126,12 @@ class Cards extends CustomComponent {
         ]),
         DIV({ className: style.wrapper }, [
           ...cards,
+        ]),
+      ];
+    } else {
+      content = [
+        P({ className: style.noWords }, [
+          'No words in this category!',
         ]),
       ];
     }

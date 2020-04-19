@@ -6,12 +6,12 @@ import style from './style.css';
 class MenuButton extends CustomComponent {
   constructor(props) {
     super(props);
-    
+
     this.node.addEventListener('click', this.props.onMenuClick);
   }
 
   render() {
-    const classMode = this.props.open ? style.open :  '';
+    const classMode = this.props.open ? style.open : '';
     return (
       BUTTON({ id: 'MenuButton', className: `${style.button} ${classMode}` },
         [

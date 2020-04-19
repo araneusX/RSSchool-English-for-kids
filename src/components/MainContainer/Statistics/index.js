@@ -2,7 +2,6 @@ import {
   DIV, SELECT, OPTION, P, TR, TD, TABLE, COLGROUP, COL, CustomComponent,
 } from '../../../my_modules/htmlComponents';
 import StatisticsButton from './StatisticsButton';
-import Cards from '../Cards';
 import style from './style.css';
 
 /*
@@ -46,7 +45,7 @@ class Statistics extends CustomComponent {
           this.selectedData = this.props.data;
           this.rerender();
         } else {
-          
+          this.props.onCategoryChange('difficult');
         }
       }
     });
@@ -84,7 +83,7 @@ class Statistics extends CustomComponent {
     const tableContent = [];
     words.forEach((word) => {
       tableContent.push(
-        TR({ className: style.tr }, [
+        TR({}, [
           TD({ className: `${style.td} ${style.word}` }, [word.word]),
           TD({ className: style.td, rowspan: '2' }, [word.statistics.train]),
           TD({ className: style.td, rowspan: '2' }, [word.statistics.view]),

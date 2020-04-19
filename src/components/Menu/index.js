@@ -36,8 +36,12 @@ class Menu extends CustomComponent {
     }
 
     if (newProps.current !== this.props.current) {
-      document.getElementById(this.props.current).classList.remove(style.current);
-      document.getElementById(newProps.current).classList.add(style.current);
+      if (newProps.current !== 'difficult') {
+        document.getElementById(newProps.current).classList.add(style.current);
+      }
+      if (this.props.current !== 'difficult') {
+        document.getElementById(this.props.current).classList.remove(style.current);
+      }
     }
 
     this.props = newProps;

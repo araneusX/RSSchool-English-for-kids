@@ -1,4 +1,4 @@
-﻿import { BODY } from './my_modules/htmlComponents';
+import { BODY } from './my_modules/htmlComponents';
 import Page from './components/Page';
 import getStartState from './data';
 import './assets/style.css';
