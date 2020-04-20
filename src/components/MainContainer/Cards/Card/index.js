@@ -28,8 +28,8 @@ class Card extends CustomComponent {
     const classPlay = this.props.mode === 'play' ? style.play : '';
 
     return (
-      DIV({ className: style.wrapper }, [
-        ItemContainer({ className: `${style.container} ${classPlay}` }, [
+      DIV({ className: `${style.wrapper} ${classPlay}` }, [
+        ItemContainer({ className: style.container }, [
           DIV({ className: style.back }, [
             P({ className: style.translation }, [this.props.card.translation]),
           ]),
