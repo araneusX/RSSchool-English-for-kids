@@ -19,30 +19,30 @@ const startApp = (state) => {
   const appState = state;
   let App;
 
-  function refreshApp() {
+  const refreshApp = () => {
     App.refresh(appState);
-  }
+  };
 
-  function onMenuClick() {
+  const onMenuClick = () => {
     appState.menu = appState.menu === 'open' ? 'close' : 'open';
     refreshApp();
-  }
+  };
 
-  function closeMenu() {
+  const closeMenu = () => {
     appState.menu = 'close';
     refreshApp();
-  }
+  };
 
-  function onModeClick() {
+  const onModeClick = () => {
     appState.mode = appState.mode === 'train' ? 'play' : 'train';
     refreshApp();
-  }
+  };
 
-  function onCategoryChange(category) {
+  const onCategoryChange = (category) => {
     appState.current = category;
     appState.menu = 'close';
     refreshApp();
-  }
+  };
 
   appState.onMenuClick = onMenuClick;
   appState.onModeClick = onModeClick;
