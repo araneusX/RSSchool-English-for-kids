@@ -42,14 +42,18 @@ class CustomComponent {
 
   rerender() {
     const component = this.render();
+    const newChildren = [...component.children];
+    const newAttributes = { ...component.attributes };
 
     clearInnerHTML(this.node);
-    component.children.forEach((item) => {
+
+    newChildren.forEach((item) => {
       this.node.append(item.node);
     });
+    this.children = newChildren;
 
-    turnAttributes(this.node, component.attributes);
-    this.children = component.children;
+    turnAttributes(this.node, newAttributes);
+    this.attributes = newAttributes;
   }
 
   render() {}
