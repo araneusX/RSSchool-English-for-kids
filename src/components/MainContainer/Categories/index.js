@@ -8,8 +8,8 @@ class Categories extends CustomComponent {
     super(props);
 
     this.node.addEventListener('click', (e) => {
-      if (e.toElement.dataset.category) {
-        this.props.onCategoryChange(e.toElement.dataset.category);
+      if (e.target.dataset.category) {
+        this.props.onCategoryChange(e.target.dataset.category);
       }
     });
   }

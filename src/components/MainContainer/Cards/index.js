@@ -17,12 +17,12 @@ class Cards extends CustomComponent {
     this.rightResult = [];
 
     this.node.addEventListener('click', (e) => {
-      if (e.toElement.dataset.game) {
+      if (e.target.dataset.game) {
         this.onGame();
       }
 
-      if (e.toElement.dataset.card) {
-        const current = e.toElement.dataset.card;
+      if (e.target.dataset.card) {
+        const current = e.target.dataset.card;
         if (this.isPlay) {
           if (!this.rightResult.includes(current)) {
             this.game.check(current);
@@ -34,9 +34,9 @@ class Cards extends CustomComponent {
         }
       }
 
-      if (e.toElement.dataset.rotate) {
-        const classRotate = e.toElement.dataset.rotate;
-        const modNode = e.toElement.parentNode;
+      if (e.target.dataset.rotate) {
+        const classRotate = e.target.dataset.rotate;
+        const modNode = e.target.parentNode;
         modNode.classList.add(classRotate);
 
         modNode.parentNode.addEventListener('mouseleave', () => {

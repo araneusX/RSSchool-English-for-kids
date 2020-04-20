@@ -25,8 +25,8 @@ class Statistics extends CustomComponent {
     };
 
     this.node.addEventListener('click', (e) => {
-      if (e.toElement.dataset.key) {
-        const { key } = e.toElement.dataset;
+      if (e.target.dataset.key) {
+        const { key } = e.target.dataset;
         if (key === 'word') {
           this.selectedData = this.selectedData.getSortedBy(key);
         } else {
@@ -38,8 +38,8 @@ class Statistics extends CustomComponent {
         }
         this.sort[key] *= -1;
         this.rerender();
-      } else if (e.toElement.dataset.action) {
-        const { action } = e.toElement.dataset;
+      } else if (e.target.dataset.action) {
+        const { action } = e.target.dataset;
         if (action === 'reset') {
           this.props.data.resetStatistics();
           this.selectedData = this.props.data;
