@@ -30,9 +30,6 @@ class Card extends CustomComponent {
     return (
       DIV({ className: `${style.wrapper} ${classPlay}` }, [
         ItemContainer({ className: style.container }, [
-          DIV({ className: style.back }, [
-            P({ className: style.translation }, [this.props.card.translation]),
-          ]),
           DIV({ className: style.front }, [
             IMG({
               className: style.image,
@@ -41,13 +38,21 @@ class Card extends CustomComponent {
             }),
             P({ className: style.word }, [this.props.card.word]),
             DIV({ className: style.trap, 'data-card': this.props.card.id }),
+            IMG({
+              className: style.rotateBtn,
+              src: '/assets/img/rotate.svg',
+              alt: 'rotate',
+              'data-rotate': style.rotate,
+            }),
           ]),
-          IMG({
-            className: style.rotateBtn,
-            src: '/assets/img/rotate.svg',
-            alt: 'rotate',
-            'data-rotate': style.rotate,
-          }),
+          DIV({ className: style.back }, [
+            IMG({
+              className: style.image,
+              alt: this.props.card.word,
+              src: `/assets/data/card/img/${this.props.card.id}.jpg`,
+            }),
+            P({ className: style.translation }, [this.props.card.translation]),
+          ]),
         ]),
       ])
     );

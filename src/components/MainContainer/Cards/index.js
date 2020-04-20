@@ -36,7 +36,7 @@ class Cards extends CustomComponent {
 
       if (e.target.dataset.rotate) {
         const classRotate = e.target.dataset.rotate;
-        const modNode = e.target.parentNode;
+        const modNode = e.target.parentNode.parentNode;
         modNode.classList.add(classRotate);
 
         modNode.parentNode.addEventListener('mouseleave', () => {

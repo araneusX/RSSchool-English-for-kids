@@ -2,6 +2,7 @@
   margin: 20px;
   border-radius: 5px;
   position: relative;
+  background-color: transparent;
 }
 
 .container {
@@ -10,10 +11,36 @@
   transition: box-shadow 0.2s, transform 0.2s linear;
   transform-style: preserve-3d;
   margin: 0;
-  overflow: hidden;
+}
+
+.rotate {
+  transform: rotateY(180deg);
+  transition: transform 0.4s linear;
+}
+
+.back, .front {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
 }
 
 .play {
+}
+
+.play .container {
+  overflow: hidden;
 }
 
 .image {
@@ -24,7 +51,7 @@
   object-fit: cover;
   margin: 0px;
   padding: 0px;
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   transition: 0.2s;
 }
 
@@ -41,20 +68,8 @@
   margin: 0px;
   padding: 5px;
   background-color: white;
-  transition: visibility 0.2s
-}
-
-.rotate .word {
-  visibility: hidden;
-  transition: visibility 0.2s
-}
-
-.translation {
-  visibility: hidden;
-}
-
-.rotate .translation {
-  visibility: visible;
+  transition: visibility 0.2s;
+  border-radius: 0 0 5px 5px;
 }
 
 .play .word {
@@ -96,32 +111,11 @@
   bottom: -55px;
 }
 
-.rotate .rotateBtn {
-  visibility: hidden;
-  transition: visibility 0.2s
-}
-
-.back, .front {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.back {
-  transform: rotateY(180deg);
-}
-
-.rotate {
-  transform: rotateY(180deg);
-  transition: transform 0.4s linear;
-}
-
 .right {
   opacity: 0.7;
+  overflow: hidden;
+}
+
+.right .trap {
+  background: rgba(0, 0, 0, 0.527);
 }
