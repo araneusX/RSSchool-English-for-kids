@@ -18,3 +18,7 @@
   height: 40px;
   cursor: pointer;
 }
+
+.classPlay {
+  background: linear-gradient(40deg,#00bf82,#0099ae);
+}

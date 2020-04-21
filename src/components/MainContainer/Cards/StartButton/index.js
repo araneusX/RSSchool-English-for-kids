@@ -12,13 +12,21 @@ class StartButton extends CustomComponent {
     } else {
       this.node.classList.remove(style.playMode);
     }
+
+    if (newProps.isPlay) {
+      this.node.classList.add(style.classPlay);
+    } else {
+      this.node.classList.remove(style.classPlay);
+    }
+
     this.props = newProps;
   }
 
   render() {
     const content = this.props.isPlay ? 'REPEAT' : 'START GAME';
     const classMode = this.props.mode === 'play' ? style.playMode : '';
-    return BUTTON({ className: `${style.startButton} ${classMode}`, 'data-game': 'game' }, [
+    const classPlay = this.props.isPlay ? style.isPlay : '';
+    return BUTTON({ className: `${style.startButton} ${classMode} ${classPlay}`, 'data-game': 'game' }, [
       SPAN({ 'data-game': 'game' }, [content]),
     ]);
   }
