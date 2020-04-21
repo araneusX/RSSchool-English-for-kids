@@ -24,7 +24,7 @@
   {"id":"rabbit","category":"animal_a","word":"rabbit","translation":"кролик"},
   {"id":"sheep","category":"animal_a","word":"sheep","translation":"овца"},
   {"id":"bird","category":"animal_b","word":"bird","translation":"птица"},
-  {"id":"fish","category":"animal_b","word":"fish","translation":"рыба"},
+  {"id":"fish_an","category":"animal_b","word":"fish","translation":"рыба"},
   {"id":"frog","category":"animal_b","word":"frog","translation":"жаба"},
   {"id":"giraffe","category":"animal_b","word":"giraffe","translation":"жирафа"},
   {"id":"lion","category":"animal_b","word":"lion","translation":"лев"},
