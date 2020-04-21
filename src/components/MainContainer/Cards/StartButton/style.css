@@ -14,6 +14,11 @@
   overflow: hidden;
 }
 
+.startButton:hover {
+  box-shadow: -1px 4px 7px 2px rgba(0,0,0,.4);
+  transition: box-shadow 0.5s;
+}
+
 .playMode {
   height: 40px;
   cursor: pointer;
