@@ -28,7 +28,7 @@ class Cards extends CustomComponent {
             this.game.check(current);
           }
         } else if (this.props.mode === 'train') {
-          const audio = new Audio(`/assets/data/card/sound/${current}.mp3`);
+          const audio = new Audio(`./assets/data/card/sound/${current}.mp3`);
           audio.play();
           this.props.data.addTrain(current);
         }

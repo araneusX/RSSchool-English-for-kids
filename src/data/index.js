@@ -19,12 +19,12 @@ const getStartState = () => new Promise((resolve) => {
     current: 'main',
   };
 
-  getJSON('/assets/data/category/category.json')
+  getJSON('./assets/data/category/category.json')
     .then((data) => {
       startState.categories = data;
     })
     .then(() => {
-      getJSON('/assets/data/card/card.json')
+      getJSON('./assets/data/card/card.json')
         .then((data) => {
           startState.data = new AppData(data);
           resolve(startState);

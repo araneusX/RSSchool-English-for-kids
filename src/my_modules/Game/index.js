@@ -4,8 +4,8 @@ class Game {
     this.wordSet = this.shuffle(category);
     this.mistakes = 0;
     this.appData = appData;
-    this.rightSound = new Audio('/assets/sound/right.mp3');
-    this.mistakeSound = new Audio('/assets/sound/mistake.mp3');
+    this.rightSound = new Audio('./assets/sound/right.mp3');
+    this.mistakeSound = new Audio('./assets/sound/mistake.mp3');
     this.isProgress = false;
     this.isStarted = false;
     this.onMistake = onMistake;
@@ -30,7 +30,7 @@ class Game {
       this.isProgress = true;
       if (this.wordSet.length > 0) {
         this.currentWord = this.wordSet.pop();
-        this.audio = new Audio(`/assets/data/card/sound/${this.currentWord.id}.mp3`);
+        this.audio = new Audio(`./assets/data/card/sound/${this.currentWord.id}.mp3`);
         this.audio.play();
         this.audio.addEventListener('ended', () => { this.isProgress = false; });
         this.appData.addView(this.currentWord.id);
